@@ -139,34 +139,50 @@ const RecommendationsPage = ({ user }) => {
 
       {/* Generate Recommendations */}
       <Card className="glass p-8 mb-8">
-        <div className="text-center mb-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
-            Ready for Your Financial Insights?
-          </h2>
-          <p className="text-gray-600">
-            Our AI will analyze your financial data and provide personalized recommendations
-          </p>
-        </div>
-
-        <div className="flex justify-center">
-          <Button
-            onClick={getRecommendations}
-            disabled={loading}
-            className="btn-primary px-8 py-3 text-lg"
-          >
-            {loading ? (
-              <>
-                <div className="loading-spinner mr-3" />
-                Analyzing Your Financial Data...
-              </>
-            ) : (
-              <>
-                <Lightbulb className="w-5 h-5 mr-3" />
-                Get AI Recommendations
-              </>
-            )}
-          </Button>
-        </div>
+        {!hasFinancialProfile ? (
+          <div className="text-center">
+            <div className="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <DollarSign className="w-8 h-8 text-amber-600" />
+            </div>
+            <h2 className="text-xl font-semibold text-gray-900 mb-2">
+              Complete Your Financial Profile First
+            </h2>
+            <p className="text-gray-600 mb-6">
+              We need your financial information to provide personalized recommendations
+            </p>
+            <div className="flex justify-center space-x-4">
+              <a href="/setup" className="btn-primary px-8 py-3 text-lg rounded-lg text-white no-underline inline-block">
+                Complete Financial Setup
+              </a>
+            </div>
+          </div>
+        ) : (
+          <div className="text-center">
+            <h2 className="text-xl font-semibold text-gray-900 mb-2">
+              Ready for Your Financial Insights?
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Our AI will analyze your financial data and provide personalized recommendations
+            </p>
+            <Button
+              onClick={getRecommendations}
+              disabled={loading}
+              className="btn-primary px-8 py-3 text-lg"
+            >
+              {loading ? (
+                <>
+                  <div className="loading-spinner mr-3" />
+                  Analyzing Your Financial Data...
+                </>
+              ) : (
+                <>
+                  <Lightbulb className="w-5 h-5 mr-3" />
+                  Get AI Recommendations
+                </>
+              )}
+            </Button>
+          </div>
+        )}
 
         {user.subscription_status !== 'active' && (
           <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
