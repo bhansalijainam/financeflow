@@ -7,6 +7,32 @@ const RecommendationsPage = ({ user }) => {
   const [recommendations, setRecommendations] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [hasFinancialProfile, setHasFinancialProfile] = useState(true);
+
+  useEffect(() => {
+    checkFinancialProfile();
+  }, []);
+
+  const checkFinancialProfile = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/user/setup`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const hasProfile = data.cash_balance !== undefined || data.savings_balance !== undefined;
+        setHasFinancialProfile(hasProfile);
+      } else {
+        setHasFinancialProfile(false);
+      }
+    } catch (error) {
+      setHasFinancialProfile(false);
+    }
+  };
 
   const getRecommendations = async () => {
     setLoading(true);
