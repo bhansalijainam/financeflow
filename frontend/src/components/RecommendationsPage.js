@@ -35,6 +35,11 @@ const RecommendationsPage = ({ user }) => {
   };
 
   const getRecommendations = async () => {
+    if (!hasFinancialProfile) {
+      setError('Please complete your financial profile first to get personalized recommendations.');
+      return;
+    }
+
     setLoading(true);
     setError('');
     setRecommendations('');
