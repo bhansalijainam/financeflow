@@ -124,6 +124,28 @@ const Dashboard = ({ user }) => {
         </Button>
       </div>
 
+      {/* Financial Profile Status */}
+      {(!dashboardData?.cash_balance && !dashboardData?.savings_balance) && (
+        <Card className="glass p-6 border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 mb-8">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center">
+                <Wallet className="w-6 h-6 text-amber-600" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-amber-800">Complete Your Financial Profile</h3>
+                <p className="text-amber-700">Add your financial details to get personalized AI recommendations</p>
+              </div>
+            </div>
+            <Link to="/setup">
+              <Button className="bg-amber-600 hover:bg-amber-700 text-white">
+                Complete Setup
+              </Button>
+            </Link>
+          </div>
+        </Card>
+      )}
+
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         <Card className="glass p-6 card-hover">
