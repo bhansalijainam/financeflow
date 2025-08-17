@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
 import { Lightbulb, TrendingUp, CreditCard, DollarSign, RefreshCw, Sparkles } from 'lucide-react';
