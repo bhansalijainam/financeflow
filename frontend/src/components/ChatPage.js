@@ -99,7 +99,7 @@ const ChatPage = ({ user }) => {
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
-      setLoading(False);
+      setLoading(false);
     }
   };
 
