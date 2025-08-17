@@ -3,7 +3,7 @@ import { Card } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { ScrollArea } from './ui/scroll-area';
-import { Send, MessageCircle, Bot, User, Trash2, RefreshCw } from 'lucide-react';
+import { Send, MessageCircle, Bot, User, Trash2, RefreshCw, DollarSign } from 'lucide-react';
 
 const ChatPage = ({ user }) => {
   const [messages, setMessages] = useState([]);
