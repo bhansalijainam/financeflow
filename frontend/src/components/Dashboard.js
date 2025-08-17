@@ -287,6 +287,13 @@ const Dashboard = ({ user }) => {
         <Card className="glass p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
           <div className="space-y-3">
+            <Link to="/setup" className="block">
+              <Button className="w-full justify-start bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700">
+                <Wallet className="w-4 h-4 mr-2" />
+                Update Financial Profile
+              </Button>
+            </Link>
+            
             <Link to="/expenses" className="block">
               <Button variant="outline" className="w-full justify-start">
                 <Plus className="w-4 h-4 mr-2" />
